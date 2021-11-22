@@ -1,0 +1,8 @@
+#Files to ignore:
+
+
+#Dir to ignore:
+build/
+dist/
+msgext.egg-info/
+
