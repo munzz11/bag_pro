@@ -4,7 +4,7 @@
 2. [ msgext ](#msgext)
 
 ## About
-This is a set of specialized tools for ROS .bag post processing. These tools are built specifically for the use of my lab with our vehicles, they are mostly likely not optimized or well documented. With that said, if you find them useful, want to contribute, or have suggestions, I'll do my best to maintain the repo.
+This is a set of specialized tools for ROS .bag post processing. These tools are built specifically for the uses of the lab that I work in, with our vehicles, they are mostly likely not optimized or well documented. With that said, if you find them useful, want to contribute, or have suggestions, I'll do my best to maintain the repo.
 
 ## Installation
 Installation of these utilities may vary, some of them are built as ros packages, intended to be imported and installed into an existing ros workspace. Some of them can be built/run independently. Vague instructions will be included in script details bellow. 
