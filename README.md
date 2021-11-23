@@ -30,12 +30,12 @@ If you're merging bag files, chances are you have a ROS worksapce setup but in t
 4. Run with `merge_bags` or `./merge_bags`
 
 ##### Arguments 
-`-o, --output Output bag file name`
-`-c, --compression Compression format: none, lz4 or bz2 (default lz4)`
-`-p, --progress Display progress`
-`-s, --start_time Skip messages earlier than start time (Y-m-d-H:M:S) UTC`
-`-e, --end_time Skip messages later than end time (Y-m-d-H:M:S) UTC`
-`-h, --help Display this message`
+`-o, --output Output bag file name`<br />
+`-c, --compression Compression format: none, lz4 or bz2 (default lz4)`<br />
+`-p, --progress Display progress`<br />
+`-s, --start_time Skip messages earlier than start time (Y-m-d-H:M:S) UTC`<br />
+`-e, --end_time Skip messages later than end time (Y-m-d-H:M:S) UTC`<br />
+`-h, --help Display this message`<br />
 
 You could probably compile and run this outside of a ROS workspace with the necessary rosdeps  `¯\_(ツ)_/¯`
 
@@ -54,18 +54,18 @@ This script is *not* a ros package. Install via:
 3. `sudo python3 setup.py install`
 
 ##### Arguments
-`usage: msgext [-h] [-v] [-w] [-n N] bag [bag ...]`
+`usage: msgext [-h] [-v] [-w] [-n N] bag [bag ...]`<br />
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Read, analyze and build temp workspaces containing .msg definitions from a ROS .bag file`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Read, analyze and build temp workspaces containing .msg definitions from a ROS .bag file`<br />
 
-`positional arguments:`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`bag         Path of a bag file or a folder of bag files.`
+`positional arguments:`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`bag         Path of a bag file or a folder of bag files.`<br />
 
-`optional arguments:`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-h, --help  show this help message and exit`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-v          Verbose mode, prints msg definitions as they're read (default: False)`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w          Workspace mode, automatically generates a ROS workspace containing msg definitions (default: False)`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-n N        Name of workspace folder, default is 'workspace' (default: None)`
+`optional arguments:`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-h, --help  show this help message and exit`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-v          Verbose mode, prints msg definitions as they're read (default: False)`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w          Workspace mode, automatically generates a ROS workspace containing msg definitions (default: False)`<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-n N        Name of workspace folder, default is 'workspace' (default: None)`<br />
 
 ##### Demo
 ![Alt Text](https://i.ibb.co/gySYXmV/msgext-example.gif)
