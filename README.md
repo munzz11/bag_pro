@@ -56,16 +56,16 @@ This script is *not* a ros package. Install via:
 ##### Arguments
 `usage: msgext [-h] [-v] [-w] [-n N] bag [bag ...]`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Read, analyze and build temp workspaces containing .msg definitions from a ROS .bag file,.`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`Read, analyze and build temp workspaces containing .msg definitions from a ROS .bag file`
 
 `positional arguments:`
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`bag         Path of a bag file or a folder of bag files.`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`bag         Path of a bag file or a folder of bag files.`
 
 `optional arguments:`
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-h, --help  show this help message and exit`
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-v          Verbose mode, prints msg definitions as they're read (default: False)`
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w          Workspace mode, automatically generates a ROS workspace containing msg definitions (default: False)`
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-n N        Name of workspace folder, default is 'workspace' (default: None)`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-h, --help  show this help message and exit`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-v          Verbose mode, prints msg definitions as they're read (default: False)`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-w          Workspace mode, automatically generates a ROS workspace containing msg definitions (default: False)`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`-n N        Name of workspace folder, default is 'workspace' (default: None)`
 
 ##### Demo
 ![Alt Text](https://i.ibb.co/gySYXmV/msgext-example.gif)
