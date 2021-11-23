@@ -1,8 +1,12 @@
 #Files to ignore:
-
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/tasks
+CMakeCache.txt
+*.egg-info/
 
 #Dir to ignore:
 build/
 dist/
-msgext.egg-info/
+
 
