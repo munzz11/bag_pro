@@ -16,7 +16,7 @@ This is a running list of the scripts, along with some info of what they're for,
 
 <a name="#bag_merge"></a>
 
-### bag_merge
+# bag_merge
 
 Bag_merge was created to simply combine multiple bag files into one at a reasonable speed. This is because in many applications bag files are given time or size caps and are split into multiple bag files. When analyzing bag files after an operation/deployment/test it is often very useful to be able to see data that spans across multiple bag files. 
 This has been done in python before, however when merging large bags it can be quite slow in python.
@@ -44,7 +44,7 @@ You could probably compile and run this outside of a ROS workspace with the nece
 
 <a name="#msgext"></a>
 
-### msgext
+# msgext
 This tool was created to extract the the .msg definitions from a ROS .bag file. Custom message definitions are somewhat common in ROS, but if you are doing post processing or working on a subsystem of someone elses roscore, you may not always have the custom definitions to compile in your workspace, this tools intends to automate extracting message definitions from a rosbag building a rudimentary workspace with all the message definitions from the bag file.
 
 ##### Installation 
