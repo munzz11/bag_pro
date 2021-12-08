@@ -96,7 +96,8 @@ def main():
                             f.write(i + '\n')
                     f.close()
       
-      
+if __name__ == '__main__':
+    main()      
 
 
     
