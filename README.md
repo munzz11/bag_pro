@@ -33,8 +33,8 @@ If you're merging bag files, chances are you have a ROS worksapce setup but in t
 `-o, --output Output bag file name`<br />
 `-c, --compression Compression format: none, lz4 or bz2 (default lz4)`<br />
 `-p, --progress Display progress`<br />
-`-s, --start_time Skip messages earlier than start time (Y-m-d-H:M:S) UTC`<br />
-`-e, --end_time Skip messages later than end time (Y-m-d-H:M:S) UTC`<br />
+`-s, --start_time Skip messages earlier than start time (Y-m-d-H:M:S) (local time)`<br />
+`-e, --end_time Skip messages later than end time (Y-m-d-H:M:S) (local time`<br />
 `-h, --help Display this message`<br />
 
 You could probably compile and run this outside of a ROS workspace with the necessary rosdeps  `¯\_(ツ)_/¯`
