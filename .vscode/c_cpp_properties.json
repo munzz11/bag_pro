@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/field/project11/catkin_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/field/project11/catkin_ws/src/bag_pro/bag_merge/include/**",
+        "/home/field/project11/catkin_ws/src/dubins_curves/include/**",
+        "/home/field/project11/catkin_ws/src/sensors/kongsberg_em_driver/include/**",
+        "/home/field/project11/catkin_ws/src/sensors/librosasio/include/**",
+        "/home/field/project11/catkin_ws/src/path_planner/path_planner_common/include/**",
+        "/home/field/project11/catkin_ws/src/project11/include/**",
+        "/home/field/project11/catkin_ws/src/sensors/rqt_marine_radar/include/**",
+        "/home/field/project11/catkin_ws/src/survey_manager/include/**",
+        "/home/field/project11/catkin_ws/src/udp_bridge/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
