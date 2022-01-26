@@ -1,5 +1,6 @@
 #include <rosbag/bag.h>
 #include <rosbag/view.h>
+#include <rosbag/query.h>
 #include "progressbar.hpp"
 #include <ctime>
 #include <iostream>
@@ -11,6 +12,13 @@
 // -s, --start_time Skip messages earlier than start time
 // -e, --end_time Skip messages later than end time
 // -h, --help Display this message
+
+std::map<std::string, bool> exclude_map;
+
+bool checkExclude(const rosbag::ConnectionInfo* info)
+{
+  return !exclude_map[info->topic];
+}
 
 int main(int argc, char *argv[])
 {
@@ -35,6 +43,8 @@ int main(int argc, char *argv[])
   }
   
   std::vector<std::string> bagfile_names;
+  std::vector<std::string> include_topics;
+  std::vector<std::string> exclude_topics;
 
   for (auto arg = arguments.begin(); arg != arguments.end();arg++) 
   {
@@ -46,6 +56,9 @@ int main(int argc, char *argv[])
       std::cout << "-s, --start_time Skip messages earlier than start time (Y-m-d-H:M:S) (local time)" << std::endl;
       std::cout << "-e, --end_time Skip messages later than end time (Y-m-d-H:M:S) (local time)" << std::endl;
       std::cout << "-h, --help Display this message" << std::endl;
+      std::cout << "-x, --exclude Exclude a topic, may be repeated" << std::endl;
+      std::cout << "-i, --include Ixclude a topic, may be repeated" << std::endl;
+      std::cout << "-t, --topic Topic filtering config file" << std::endl;
       return -1;
     }
     else if (*arg == "-o")
@@ -90,6 +103,32 @@ int main(int argc, char *argv[])
         std::cout << "[INFO] Merging with end time: " << end_time << std::endl;
       }
     }
+     else if (*arg == "-i")
+    {
+      arg++;
+      if (exclude_topics.empty())
+      {
+        include_topics.push_back(*arg);
+        std::cout << "[INFO] Including topic: " << *arg << std::endl;
+      }
+      else
+      {
+        std::cout << "conflicting include and exclude args please use a config file to do complex topic filtering" << std::endl;
+      }
+    }
+     else if (*arg == "-x")
+    {
+      arg++;
+      if (include_topics.empty())
+      {
+        exclude_map[*arg] = true;
+        std::cout << "[INFO] excluding topic: " << *arg << std::endl;
+      }
+      else
+      {
+        std::cout << "conflicting include and exclude args please use a config file to do complex topic filtering" << std::endl;
+      }
+    }
 
 //################ Read in all non-args as paths to bags ###################
 
@@ -114,7 +153,7 @@ int main(int argc, char *argv[])
   if (compression_string == "lz4")
   {
     compression = rosbag::CompressionType::LZ4;
-    if( progress == true)
+    if ( progress == true)
     {
       std::cout << "[INFO] Compression set to LZ4" << std::endl;
     }
@@ -122,7 +161,7 @@ int main(int argc, char *argv[])
   if (compression_string == "bz2")
   {
     compression = rosbag::CompressionType::BZ2;
-    if( progress == true)
+    if ( progress == true)
     {
       std::cout << "[INFO] Compression set to BZ2" << std::endl;
     }
@@ -130,7 +169,7 @@ int main(int argc, char *argv[])
   if (compression_string == "none")
   {
     compression = rosbag::CompressionType::Uncompressed;
-    if( progress == true)
+    if ( progress == true)
     {
       std::cout << "[INFO] Compression set to none" << std::endl;
     }
@@ -144,15 +183,26 @@ int main(int argc, char *argv[])
   int size = 0;
   rosbag::View merged_view(true);
   std::vector<std::shared_ptr<rosbag::Bag> > bags;
-  for(auto arg = bagfile_names.begin(); arg != bagfile_names.end();arg++)
+  for (auto arg = bagfile_names.begin(); arg != bagfile_names.end();arg++)
   { 
     if (progress == true)
     {
     std::cout << "[INFO] Opening bag " << *arg <<std::endl;
     }
-    bags.push_back(std::shared_ptr<rosbag::Bag>(new rosbag::Bag));
-    bags.back()->open(*arg, rosbag::bagmode::Read);
-    merged_view.addQuery(*bags.back(),start,end);
+    if (!include_topics.empty())
+    {
+      std::vector<std::string> topics_filt;
+      topics_filt = include_topics;
+      bags.push_back(std::shared_ptr<rosbag::Bag>(new rosbag::Bag));
+      bags.back()->open(*arg, rosbag::bagmode::Read);
+      merged_view.addQuery(*bags.back(), rosbag::TopicQuery(topics_filt),start,end);
+    }
+    else 
+    {
+      bags.push_back(std::shared_ptr<rosbag::Bag>(new rosbag::Bag));
+      bags.back()->open(*arg, rosbag::bagmode::Read);
+      merged_view.addQuery(*bags.back(),&checkExclude,start,end);
+    }
   }
   
 //################ Review all topics in view ###################
@@ -160,7 +210,7 @@ int main(int argc, char *argv[])
   size = merged_view.size();
   std::vector<const rosbag::ConnectionInfo *> connection_infos = merged_view.getConnections();
   std::set<std::string> topics;
-  for(const rosbag::ConnectionInfo* info: connection_infos) 
+  for (const rosbag::ConnectionInfo* info: connection_infos) 
   {
   topics.insert(info->topic);
   }
@@ -177,9 +227,9 @@ int main(int argc, char *argv[])
 //################ Write view to output bag ###################
 
   progressbar bar(size);
-  for(rosbag::MessageInstance const m: merged_view)
+  for (rosbag::MessageInstance const m: merged_view)
   {
-    if(progress == true)
+    if (progress == true)
     {
       bar.update();
     }
