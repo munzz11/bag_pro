@@ -55,10 +55,10 @@ int main(int argc, char *argv[])
       std::cout << "-p, --progress Display progress" << std::endl;
       std::cout << "-s, --start_time Skip messages earlier than start time (Y-m-d-H:M:S) (local time)" << std::endl;
       std::cout << "-e, --end_time Skip messages later than end time (Y-m-d-H:M:S) (local time)" << std::endl;
-      std::cout << "-h, --help Display this message" << std::endl;
-      std::cout << "-x, --exclude Exclude a topic, may be repeated" << std::endl;
+       std::cout << "-x, --exclude Exclude a topic, may be repeated" << std::endl;
       std::cout << "-i, --include Ixclude a topic, may be repeated" << std::endl;
       std::cout << "-t, --topic Topic filtering config file" << std::endl;
+      std::cout << "-h, --help Display this message" << std::endl;
       return -1;
     }
     else if (*arg == "-o")
