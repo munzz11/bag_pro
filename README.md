@@ -35,6 +35,9 @@ If you're merging bag files, chances are you have a ROS worksapce setup but in t
 `-p, --progress Display progress`<br />
 `-s, --start_time Skip messages earlier than start time (Y-m-d-H:M:S) (local time)`<br />
 `-e, --end_time Skip messages later than end time (Y-m-d-H:M:S) (local time`<br />
+`-x, --exclude Exclude a topic, may be repeated`<br />
+`-i, --include Ixclude a topic, may be repeated`<br />
+`-t, --topic Topic filtering config file`<br />
 `-h, --help Display this message`<br />
 
 You could probably compile and run this outside of a ROS workspace with the necessary rosdeps  `¯\_(ツ)_/¯`
